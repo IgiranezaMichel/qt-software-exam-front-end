@@ -1,7 +1,15 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const Navigation=()=>{
     const userDetail=JSON.parse(String(localStorage.getItem('user')));
+    const navigate=useNavigate();
+    
+    const logout=()=>{
+         localStorage.removeItem('user');
+        navigate("/");
+    }
+    
     return(
         <>
       <nav
@@ -29,8 +37,11 @@ export const Navigation=()=>{
                                  </div>
                         </a>
                     </li>
-
+                    
                 </ul>
+                <Button onClick={()=>logout()} className="">
+                    logout
+                </Button>
             </div>
         </div>
       </nav>
